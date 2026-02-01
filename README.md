@@ -19,3 +19,6 @@ But if you provide a rather large collection from which only a handful is needed
 After loading the configuration (which can be static, of course), only the needed code of the widgets should be loaded.
 
 In this codebase I want to describe a technique I found useful for these kind of usecases.
+
+**TODO:**
+Actually describe what I'm doing here... 😎
