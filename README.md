@@ -1,59 +1,21 @@
-# LazyDynamicComponent
+# Lazy-Loading Dynamic Components
+
+## Preface
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+I assume you know what to do to run it.
 
-## Development server
+## What's this about?
 
-To start a local development server, run:
+In large applications lazy loading parts of it through the router should be a default approach to keep the main bundle size as small as possible.
+While you have to be disciplined about your code, what you import from where etc., this is something I assume you know enough about, so I don't have to explain it.
 
-```bash
-ng serve
-```
+This is about having some kind of "dashboard" like component, which loads "widgets" depending on some kind of (user related) configuration.
+Usually the user is able to select widgets from a collection that can contain a lot of different types of widgets.
+And they are able to arrange them on some kind of dashboard (which can be just a simple list).
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+If your widget collection only contains a handful of different types, then this is overkill.
+But if you provide a rather large collection from which only a handful is needed, you may want to structure your code in a way, your main bundle doesn't contain any widget related code.
+After loading the configuration (which can be static, of course), only the needed code of the widgets should be loaded.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+In this codebase I want to describe a technique I found useful for these kind of usecases.
