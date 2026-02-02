@@ -20,5 +20,9 @@ After loading the configuration (which can be static, of course), only the neede
 
 In this codebase I want to describe a technique I found useful for these kind of usecases.
 
+## Setup
+
+I activated `namedChunks` and `sourceMap` in the production configuration, so it's easier to see, which code ends up in which chunk.
+
 **TODO:**
 Actually describe what I'm doing here... 😎

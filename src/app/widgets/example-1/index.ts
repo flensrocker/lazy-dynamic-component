@@ -1,1 +1,1 @@
-export { provideExample1Widget } from './example-1-definition';
+export { Example1 } from './example-1';

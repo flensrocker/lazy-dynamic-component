@@ -14,7 +14,7 @@ import { WidgetDefinition } from '../widget-definition';
   selector: 'ldc-widget-host',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<h2>{{ title() }}</h2>
-    <ng-container #widget />`,
+    <ng-container />`,
 })
 export class WidgetHost {
   readonly #vcr = inject(ViewContainerRef);
