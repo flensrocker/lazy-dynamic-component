@@ -36,6 +36,8 @@ export class WidgetHost {
         return;
       }
 
+      this.#vcr.clear();
+
       const widgetType = this.#widgetType.value();
       // add injector, bindings or whatever you need for your widgets
       this.#vcr.createComponent(widgetType);
