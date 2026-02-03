@@ -42,7 +42,8 @@
               ],
               "outputHashing": "all",
               "namedChunks": true,
-              "sourceMap": true
+              "sourceMap": true,
+              "statsJson": true
             },
             "development": {
               "optimization": false,
