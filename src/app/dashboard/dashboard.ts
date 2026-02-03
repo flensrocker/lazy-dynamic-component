@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 
-import { injectMulti } from '../utils';
-import { WidgetDefinition } from '../widget-definition';
+import { injectWidgetDefinitions } from '../widget-definition';
 import { WidgetHost } from './widget-host';
 
 @Component({
@@ -14,21 +13,8 @@ import { WidgetHost } from './widget-host';
     }`,
 })
 export class Dashboard {
-  readonly #widgetDefinitions: readonly WidgetDefinition[] = injectMulti(WidgetDefinition);
-  readonly #widgetDefinitionMap = computed(() => {
-    return this.#widgetDefinitions.reduce(
-      (map, def) => map.set(def.selector, def),
-      new Map<string, WidgetDefinition>(),
-    );
-  });
-
   // should be an input/resource whatever...
   readonly #widgetSelectors = computed(() => ['example-1-widget', 'example-2-widget'] as const);
 
-  protected readonly widgets = computed(() => {
-    const definitionMap = this.#widgetDefinitionMap();
-    const selectors = this.#widgetSelectors();
-
-    return selectors.map((selector) => definitionMap.get(selector)).filter((def) => def != null);
-  });
+  protected readonly widgets = injectWidgetDefinitions(this.#widgetSelectors);
 }

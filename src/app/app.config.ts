@@ -7,6 +7,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideExample1Widget, provideExample2Widget } from './widgets/definitions';
+import { provideWidgetDefinitionClient } from './widget-definition';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,5 +18,6 @@ export const appConfig: ApplicationConfig = {
     // of course you can scope them to a route etc.
     provideExample1Widget(),
     provideExample2Widget(),
+    provideWidgetDefinitionClient(),
   ],
 };
